@@ -1,0 +1,512 @@
+install.packages("ggplot2")
+install.packages("viridis")
+install.packages("tidyverse")
+install.packages("tidyverse")
+library(RColorBrewer)
+library(seqinr)
+wuhan<-read.fasta(file="wuhan.fasta")
+setwd("C:/Users/maria/Downloads/covid")
+library(RColorBrewer)
+library(seqinr)
+wuhan<-read.fasta(file="wuhan.fasta")
+reinounido<-read.fasta(file="uk.fasta")
+alfa<-read.fasta(file="alfa.fasta")
+sudafrica<-read.fasta(file="sudafrica.fasta")
+beta<-read.fasta(file="beta.fasta")
+brasil<-read.fasta(file="brazil.fasta")
+gamma<-read.fasta(file="gamma.fasta")
+india<-read.fasta(file="india.fasta")
+delta<-read.fasta(file="delta.fasta")
+# Calculate length
+lenwuhan <- getLength(wuhan)
+lenreinounido <- getLength(reinounido)
+lenalfa <- getLength(alfa)
+lensudafrica <- getLength(sudafrica)
+lenbeta <- getLength(beta)
+lenbrasil <- getLength(brasil)
+lengamma <- getLength(gamma)
+lenindia <- getLength(india)
+lendelta <- getLength(delta)
+wuhann <- sapply(wuhan, function(seq) gsub("n", "", seq))
+reinounidon <- sapply(reinounido, function(seq) gsub("n", "", seq))
+alfan <- sapply(alfa, function(seq) gsub("n", "", seq))
+sudafrican <- sapply(sudafrica, function(seq) gsub("n", "", seq))
+betan <- sapply(beta, function(seq) gsub("n", "", seq))
+brasiln <- sapply(brasil, function(seq) gsub("n", "", seq))
+gamman <- sapply(gamma, function(seq) gsub("n", "", seq))
+indian <- sapply(india, function(seq) gsub("n", "", seq))
+deltan <- sapply(delta, function(seq) gsub("n", "", seq))
+# Calculate length
+lenwuhan1 <- getLength(wuhann)
+lenreinounido1 <- getLength(reinounidon)
+lenalfa1 <- getLength(alfan)
+lensudafrica1 <- getLength(sudafrican)
+lenbeta1 <- getLength(betan)
+lenbrasil1 <- getLength(brasiln)
+lengamma1 <- getLength(gamman)
+lenindia1 <- getLength(indian)
+lendelta1 <- getLength(deltan)
+cat("El tamaño de cada genoma de Sars-Cov-2 es:\n Wuhan:",lenwuhan1,"caracteres","\n Reino Unido:",lenreinounido1,"caracteres","\n Alfa:",lenalfa1,"caracteres","\n Sudafrica:",lensudafrica1,"caracteres","\n Beta:",lenbeta1,"caracteres","\n Brasil:",lenbrasil1,"caracteres","\n Gamma:",lengamma1,"caracteres","\n India:",lenindia1,"caracteres", "\n Delta:",lendelta1,"caracteres" )
+#2. GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+longitud <- c(lenwuhan1, lenreinounido1, lenalfa1, lensudafrica1, lenbeta1, lenbrasil1, lengamma1, lenindia1, lendelta1)
+color1 <- brewer.pal(9, "Spectral")
+bp <- barplot(longitud, beside=TRUE, col=color, ylab="Longitud", ylim=c(29000, 30900), main= "Longitud de los genomas")
+library(RColorBrewer)
+library(seqinr)
+wuhan<-read.fasta(file="wuhan.fasta")
+reinounido<-read.fasta(file="uk.fasta")
+alfa<-read.fasta(file="alfa.fasta")
+sudafrica<-read.fasta(file="sudafrica.fasta")
+beta<-read.fasta(file="beta.fasta")
+brasil<-read.fasta(file="brazil.fasta")
+gamma<-read.fasta(file="gamma.fasta")
+india<-read.fasta(file="india.fasta")
+delta<-read.fasta(file="delta.fasta")
+# Calculate length
+lenwuhan <- getLength(wuhan)
+lenreinounido <- getLength(reinounido)
+lenalfa <- getLength(alfa)
+lensudafrica <- getLength(sudafrica)
+lenbeta <- getLength(beta)
+lenbrasil <- getLength(brasil)
+lengamma <- getLength(gamma)
+lenindia <- getLength(india)
+lendelta <- getLength(delta)
+wuhann <- sapply(wuhan, function(seq) gsub("n", "", seq))
+reinounidon <- sapply(reinounido, function(seq) gsub("n", "", seq))
+alfan <- sapply(alfa, function(seq) gsub("n", "", seq))
+sudafrican <- sapply(sudafrica, function(seq) gsub("n", "", seq))
+betan <- sapply(beta, function(seq) gsub("n", "", seq))
+brasiln <- sapply(brasil, function(seq) gsub("n", "", seq))
+gamman <- sapply(gamma, function(seq) gsub("n", "", seq))
+indian <- sapply(india, function(seq) gsub("n", "", seq))
+deltan <- sapply(delta, function(seq) gsub("n", "", seq))
+# Calculate length
+lenwuhan1 <- getLength(wuhann)
+lenreinounido1 <- getLength(reinounidon)
+lenalfa1 <- getLength(alfan)
+lensudafrica1 <- getLength(sudafrican)
+lenbeta1 <- getLength(betan)
+lenbrasil1 <- getLength(brasiln)
+lengamma1 <- getLength(gamman)
+lenindia1 <- getLength(indian)
+lendelta1 <- getLength(deltan)
+cat("El tamaño de cada genoma de Sars-Cov-2 es:\n Wuhan:",lenwuhan1,"caracteres","\n Reino Unido:",lenreinounido1,"caracteres","\n Alfa:",lenalfa1,"caracteres","\n Sudafrica:",lensudafrica1,"caracteres","\n Beta:",lenbeta1,"caracteres","\n Brasil:",lenbrasil1,"caracteres","\n Gamma:",lengamma1,"caracteres","\n India:",lenindia1,"caracteres", "\n Delta:",lendelta1,"caracteres" )
+#2. GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+longitud <- c(lenwuhan1, lenreinounido1, lenalfa1, lensudafrica1, lenbeta1, lenbrasil1, lengamma1, lenindia1, lendelta1)
+color <- brewer.pal(9, "Spectral")
+bp <- barplot(longitud, beside=TRUE, col=color, ylab="Longitud", ylim=c(29000, 30900), main= "Longitud de los genomas")
+legend("topright", legend=genomas, fill=color, cex=0.65)
+text(x = bp, y = longitud, label = longitud, pos = 1, cex = 0.8, col = "black")
+library(RColorBrewer)
+library(seqinr)
+wuhan<-read.fasta(file="wuhan.fasta")
+reinounido<-read.fasta(file="uk.fasta")
+alfa<-read.fasta(file="alfa.fasta")
+sudafrica<-read.fasta(file="sudafrica.fasta")
+beta<-read.fasta(file="beta.fasta")
+brasil<-read.fasta(file="brazil.fasta")
+gamma<-read.fasta(file="gamma.fasta")
+india<-read.fasta(file="india.fasta")
+delta<-read.fasta(file="delta.fasta")
+# Calculate length
+lenwuhan <- getLength(wuhan)
+lenreinounido <- getLength(reinounido)
+lenalfa <- getLength(alfa)
+lensudafrica <- getLength(sudafrica)
+lenbeta <- getLength(beta)
+lenbrasil <- getLength(brasil)
+lengamma <- getLength(gamma)
+lenindia <- getLength(india)
+lendelta <- getLength(delta)
+wuhann <- sapply(wuhan, function(seq) gsub("n", "", seq))
+reinounidon <- sapply(reinounido, function(seq) gsub("n", "", seq))
+alfan <- sapply(alfa, function(seq) gsub("n", "", seq))
+sudafrican <- sapply(sudafrica, function(seq) gsub("n", "", seq))
+betan <- sapply(beta, function(seq) gsub("n", "", seq))
+brasiln <- sapply(brasil, function(seq) gsub("n", "", seq))
+gamman <- sapply(gamma, function(seq) gsub("n", "", seq))
+indian <- sapply(india, function(seq) gsub("n", "", seq))
+deltan <- sapply(delta, function(seq) gsub("n", "", seq))
+# Calculate length
+lenwuhan1 <- getLength(wuhann)
+lenreinounido1 <- getLength(reinounidon)
+lenalfa1 <- getLength(alfan)
+lensudafrica1 <- getLength(sudafrican)
+lenbeta1 <- getLength(betan)
+lenbrasil1 <- getLength(brasiln)
+lengamma1 <- getLength(gamman)
+lenindia1 <- getLength(indian)
+lendelta1 <- getLength(deltan)
+cat("El tamaño de cada genoma de Sars-Cov-2 es:\n Wuhan:",lenwuhan1,"caracteres","\n Reino Unido:",lenreinounido1,"caracteres","\n Alfa:",lenalfa1,"caracteres","\n Sudafrica:",lensudafrica1,"caracteres","\n Beta:",lenbeta1,"caracteres","\n Brasil:",lenbrasil1,"caracteres","\n Gamma:",lengamma1,"caracteres","\n India:",lenindia1,"caracteres", "\n Delta:",lendelta1,"caracteres" )
+#2. GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+longitud <- c(lenwuhan1, lenreinounido1, lenalfa1, lensudafrica1, lenbeta1, lenbrasil1, lengamma1, lenindia1, lendelta1)
+color <- brewer.pal(9, "Spectral")
+bp <- barplot(longitud, beside=TRUE, col=color, ylab="Longitud", ylim=c(29000, 30900), main= "Longitud de los genomas")
+legend("topright", legend=genomas, fill=color, cex=0.65)
+text(x = bp, y = longitud, label = longitud, pos = 1, cex = 0.8, col = "black")
+#3. COMPOSICIÓN DE NUCLEÓTIDOS
+#primero convertimos a vector nuestros genomas
+funcion_vector<-function(nchar,genoma){
+genomavector<-c("")
+for (n in 1:nchar){
+genomavector<-append(genomavector,genoma[[1]][n])
+}
+genoma_total<-(paste(genomavector,collapse=""))
+genoma_total<-(toupper(genoma_total))
+return(genoma_total)
+}
+wuhan_gen<-funcion_vector(lenwuhan,wuhan)
+reinounido_gen<-funcion_vector(lenreinounido,reinounido)
+alfa_gen<-funcion_vector(lenalfa,alfa)
+sudafrica_gen<-funcion_vector(lensudafrica,sudafrica)
+beta_gen<-funcion_vector(lenbeta,beta)
+brasil_gen<-funcion_vector(lenbrasil,brasil)
+gamma_gen<-funcion_vector(lengamma,gamma)
+india_gen<-funcion_vector(lenindia,india)
+delta_gen<-funcion_vector(lendelta,delta)
+funcion_nuc<-function(genoma, nchar){
+conteo_a <- 0
+conteo_c <- 0
+conteo_g <- 0
+conteo_t <- 0
+for (i in 1:nchar) {
+nuc <- substr(genoma, i, i)
+if (nuc == "A") {
+conteo_a <- conteo_a + 1
+} else if (nuc == "C") {
+conteo_c <- conteo_c + 1
+} else if (nuc == "G") {
+conteo_g <- conteo_g + 1
+} else if (nuc == "T") {
+conteo_t <- conteo_t + 1
+}
+}
+cat("Existen", conteo_a, "A en el genoma\n")
+cat("Existen", conteo_c, "C en el genoma\n")
+cat("Existen", conteo_g, "G en el genoma\n")
+cat("Existen", conteo_t, "T en el genoma\n")
+return(c(A = conteo_a, C = conteo_c, G = conteo_g, T = conteo_t))
+}
+cat("La composición del genoma SARS-COV-2 de Wuhan es:\n")
+wuhan_comp <- funcion_nuc(wuhan_gen, lenwuhan)
+cat("La composición del genoma SARS-COV-2 de Reino Unido es:\n")
+reinounido_comp <- funcion_nuc(reinounido_gen, lenreinounido)
+cat("La composición del genoma SARS-COV-2 variante Alfa es:\n")
+alfa_comp <- funcion_nuc(alfa_gen, lenalfa)
+cat("La composición del genoma SARS-COV-2 de Sudafrica es:\n")
+sudafrica_comp <- funcion_nuc(sudafrica_gen, lensudafrica)
+cat("La composición del genoma SARS-COV-2 variante Beta es:\n")
+beta_comp <- funcion_nuc(beta_gen, lenbeta)
+cat("La composición del genoma SARS-COV-2 de Brasil es:\n")
+brasil_comp <- funcion_nuc(brasil_gen, lenbrasil)
+cat("La composición del genoma SARS-COV-2 variante Gamma es:\n")
+gamma_comp <- funcion_nuc(gamma_gen, lengamma)
+cat("La composición del genoma SARS-COV-2 de India es:\n")
+india_comp <- funcion_nuc(india_gen, lenindia)
+cat("La composición del genoma SARS-COV-2 variante Delta es:\n")
+delta_comp <- funcion_nuc(delta_gen, lendelta)
+#4. GRÁFICA
+nucleotidos <- c("Adenina", "Citosina", "Guanina", "Timina")
+df1 <- data.frame(Wuhan=wuhan_comp, UK=reinounido_comp, A=alfa_comp, Sudafrica=sudafrica_comp, B=beta_comp, Brasil=brasil_comp, G=gamma_comp, India=india_comp, D=delta_comp)
+df_matrix<-data.matrix(df1)
+color2<-brewer.pal(4,"PuRd")
+comp_n<-barplot(df_matrix,col=color2,main="Composición de Nucleotidos",ylim=c(0,39000))
+legend("topright",legend=nucleotidos,fill=color, cex=0.5)
+functiontext<-function(vector_nucleotidos,num){
+vector_nuevo<-c(vector_nucleotidos[1])
+for (i in (2:4)){
+value<-vector_nucleotidos[i]+vector_nuevo[length(vector_nuevo)]
+vector_nuevo<-append(vector_nuevo,value)
+}
+print(vector_nuevo)
+for (i in (1:4)){
+text(x = comp_n[num], y = vector_nuevo[i], label = vector_nucleotidos[i], pos = 1,cex = 0.5)
+}
+}
+functiontext(wuhan_comp,1)
+functiontext(reinounido_comp,2)
+functiontext(alfa_comp,3)
+functiontext(sudafrica_comp,4)
+functiontext(beta_comp,5)
+functiontext(brasil_comp,6)
+functiontext(gamma_comp,7)
+functiontext(india_comp,8)
+functiontext(delta_comp,9)
+#5. CONTENIDO GC
+gc_wuhan <- GC(strsplit(wuhan_gen, "")[[1]])
+gc_reinounido <- GC(strsplit(reinounido_gen, "")[[1]])
+gc_alfa <- GC(strsplit(alfa_gen, "")[[1]])
+gc_sudafrica <- GC(strsplit(sudafrica_gen, "")[[1]])
+gc_beta <- GC(strsplit(beta_gen, "")[[1]])
+gc_brasil <- GC(strsplit(brasil_gen, "")[[1]])
+gc_gamma <- GC(strsplit(gamma_gen, "")[[1]])
+gc_india <- GC(strsplit(india_gen, "")[[1]])
+gc_delta <- GC(strsplit(delta_gen, "")[[1]])
+cat("El contenido de GC en valor de 0 a 1 de cada genoma de Sars-Cov-2 es:\n Wuhan:",gc_wuhan,"\n Reino Unido:",gc_reinounido,"\n Alfa:",gc_alfa,"\n Sudafrica:",gc_sudafrica,"\n Beta:",gc_beta,"\n Brasil:",gc_brasil,"\n Gamma:",gc_gamma,"\n India:",gc_india,"\n Delta:",gc_delta)
+pgc_wuhan <- round(((gc_wuhan)*100),2)
+pgc_reinounido <- round(((gc_reinounido)*100),2)
+pgc_alfa <- round(((gc_alfa)*100), 2)
+pgc_sudafrica <- round(((gc_sudafrica)*100),2)
+pgc_beta <- round(((gc_beta)*100),2)
+pgc_brasil <- round(((gc_brasil)*100),2)
+pgc_gamma <- round(((gc_gamma)*100),2)
+pgc_india <- round(((gc_india)*100),2)
+pgc_delta <- round(((gc_delta)*100),2)
+cat("El contenido de GC en porcentaje de cada genoma de Sars-Cov-2 es:\n Wuhan:",pgc_wuhan,"%","\n Reino Unido:",pgc_reinounido,"%","\n Alfa:",pgc_alfa,"%","\n Sudafrica:",pgc_sudafrica,"%","\n Beta:",pgc_beta,"%","\n Brasil:",pgc_brasil,"%","\n Gamma:",pgc_gamma,"%","\n India:",pgc_india,"%","\n Delta:",pgc_delta,"%")
+#6.GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+gc <- c(pgc_wuhan, pgc_reinounido, pgc_alfa, pgc_sudafrica, pgc_beta, pgc_brasil, pgc_gamma, pgc_india, pgc_delta)
+color3 <- brewer.pal(9, "Spectral")
+bp2 <- barplot(gc, beside=TRUE, col=color3, ylab="GC en porcentaje", ylim=c(0, 100), main= "Contenido de GC")
+legend("topright", legend=genomas, fill=color3, cex=0.65)
+text(x = bp2, y = gc, label = gc, pos = 1, cex = 0.8, col = "black")
+#7. TABLA (MARCO DE DATOS)
+nombre_comun <- rep("coronavirus de tipo 2 causante del síndrome respiratorio agudo severo", 9)
+identificador <- c("NC_045512", "OX646281", "LR991699", "MT324062", "PP519172", "MT126808", "OQ430688", "MT012098", "OM918219")
+longitud <- c(29903, 29903, 29885, 29903, 29882, 29876, 29874, 29854, 29818)
+contenido_gc <- c(37.97, 38.02, 37.98, 37.96, 37.94, 38.00, 37.92, 38.02, 37.96)
+datos <- data.frame(Nombre_comun = nombre_comun, ID = identificador, Longitud = longitud, Contenido_GC = contenido_gc)
+rownames(datos) <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+format(datos, justify = "centre")
+#4. GRÁFICA
+nucleotidos <- c("Adenina", "Citosina", "Guanina", "Timina")
+df1 <- data.frame(Wuhan=wuhan_comp, UK=reinounido_comp, A=alfa_comp, Sudafrica=sudafrica_comp, B=beta_comp, Brasil=brasil_comp, G=gamma_comp, India=india_comp, D=delta_comp)
+df_matrix<-data.matrix(df1)
+color2<-brewer.pal(4,"PuRd")
+comp_n<-barplot(df_matrix,col=color2,main="Composición de Nucleotidos",ylim=c(0,39000))
+legend("topright",legend=nucleotidos,fill=color, cex=0.5)
+functiontext<-function(vector_nucleotidos,num){
+vector_nuevo<-c(vector_nucleotidos[1])
+for (i in (2:4)){
+value<-vector_nucleotidos[i]+vector_nuevo[length(vector_nuevo)]
+vector_nuevo<-append(vector_nuevo,value)
+}
+print(vector_nuevo)
+for (i in (1:4)){
+text(x = comp_n[num], y = vector_nuevo[i], label = vector_nucleotidos[i], pos = 1,cex = 0.5)
+}
+}
+functiontext(wuhan_comp,1)
+functiontext(reinounido_comp,2)
+functiontext(alfa_comp,3)
+functiontext(sudafrica_comp,4)
+functiontext(beta_comp,5)
+functiontext(brasil_comp,6)
+functiontext(gamma_comp,7)
+functiontext(india_comp,8)
+functiontext(delta_comp,9)
+#4. GRÁFICA
+nucleotidos <- c("Adenina", "Citosina", "Guanina", "Timina")
+df1 <- data.frame(Wuhan=wuhan_comp, UK=reinounido_comp, A=alfa_comp, Sudafrica=sudafrica_comp, B=beta_comp, Brasil=brasil_comp, G=gamma_comp, India=india_comp, D=delta_comp)
+df_matrix<-data.matrix(df1)
+color2<-brewer.pal(4,"PuRd")
+comp_n<-barplot(df_matrix,col=color2,main="Composición de Nucleotidos",ylim=c(0,39000))
+legend("topright",legend=nucleotidos,fill=color2, cex=0.5)
+functiontext<-function(vector_nucleotidos,num){
+vector_nuevo<-c(vector_nucleotidos[1])
+for (i in (2:4)){
+value<-vector_nucleotidos[i]+vector_nuevo[length(vector_nuevo)]
+vector_nuevo<-append(vector_nuevo,value)
+}
+print(vector_nuevo)
+for (i in (1:4)){
+text(x = comp_n[num], y = vector_nuevo[i], label = vector_nucleotidos[i], pos = 1,cex = 0.5)
+}
+}
+functiontext(wuhan_comp,1)
+functiontext(reinounido_comp,2)
+functiontext(alfa_comp,3)
+functiontext(sudafrica_comp,4)
+functiontext(beta_comp,5)
+functiontext(brasil_comp,6)
+functiontext(gamma_comp,7)
+functiontext(india_comp,8)
+functiontext(delta_comp,9)
+cat("El tamaño de cada genoma de Sars-Cov-2 es:\n Wuhan:",lenwuhan1,"caracteres",
+"\n Reino Unido:",lenreinounido1,"caracteres","\n Alfa:",lenalfa1,"caracteres",
+"\n Sudafrica:",lensudafrica1,"caracteres","\n Beta:",lenbeta1,"caracteres",
+"\n Brasil:",lenbrasil1,"caracteres","\n Gamma:",lengamma1,"caracteres",
+"\n India:",lenindia1,"caracteres", "\n Delta:",lendelta1,"caracteres" )
+library(RColorBrewer)
+library(seqinr)
+wuhan<-read.fasta(file="wuhan.fasta")
+reinounido<-read.fasta(file="uk.fasta")
+alfa<-read.fasta(file="alfa.fasta")
+sudafrica<-read.fasta(file="sudafrica.fasta")
+beta<-read.fasta(file="beta.fasta")
+brasil<-read.fasta(file="brazil.fasta")
+gamma<-read.fasta(file="gamma.fasta")
+india<-read.fasta(file="india.fasta")
+delta<-read.fasta(file="delta.fasta")
+# Calculate length
+lenwuhan <- getLength(wuhan)
+lenreinounido <- getLength(reinounido)
+lenalfa <- getLength(alfa)
+lensudafrica <- getLength(sudafrica)
+lenbeta <- getLength(beta)
+lenbrasil <- getLength(brasil)
+lengamma <- getLength(gamma)
+lenindia <- getLength(india)
+lendelta <- getLength(delta)
+wuhann <- sapply(wuhan, function(seq) gsub("n", "", seq))
+reinounidon <- sapply(reinounido, function(seq) gsub("n", "", seq))
+alfan <- sapply(alfa, function(seq) gsub("n", "", seq))
+sudafrican <- sapply(sudafrica, function(seq) gsub("n", "", seq))
+betan <- sapply(beta, function(seq) gsub("n", "", seq))
+brasiln <- sapply(brasil, function(seq) gsub("n", "", seq))
+gamman <- sapply(gamma, function(seq) gsub("n", "", seq))
+indian <- sapply(india, function(seq) gsub("n", "", seq))
+deltan <- sapply(delta, function(seq) gsub("n", "", seq))
+# Calculate length
+lenwuhan1 <- getLength(wuhann)
+lenreinounido1 <- getLength(reinounidon)
+lenalfa1 <- getLength(alfan)
+lensudafrica1 <- getLength(sudafrican)
+lenbeta1 <- getLength(betan)
+lenbrasil1 <- getLength(brasiln)
+lengamma1 <- getLength(gamman)
+lenindia1 <- getLength(indian)
+lendelta1 <- getLength(deltan)
+cat("El tamaño de cada genoma de Sars-Cov-2 es:\n Wuhan:",lenwuhan1,"caracteres",
+"\n Reino Unido:",lenreinounido1,"caracteres","\n Alfa:",lenalfa1,"caracteres",
+"\n Sudafrica:",lensudafrica1,"caracteres","\n Beta:",lenbeta1,"caracteres",
+"\n Brasil:",lenbrasil1,"caracteres","\n Gamma:",lengamma1,"caracteres",
+"\n India:",lenindia1,"caracteres", "\n Delta:",lendelta1,"caracteres" )
+#2. GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil",
+"Gamma", "India", "Delta")
+longitud <- c(lenwuhan1, lenreinounido1, lenalfa1, lensudafrica1, lenbeta1,
+lenbrasil1, lengamma1, lenindia1, lendelta1)
+color <- brewer.pal(9, "Spectral")
+bp <- barplot(longitud, beside=TRUE, col=color, ylab="Longitud", ylim=c(29000, 30900),
+main= "Longitud de los genomas")
+legend("topright", legend=genomas, fill=color, cex=0.65)
+text(x = bp, y = longitud, label = longitud, pos = 1, cex = 0.8, col = "black")
+#3. COMPOSICIÓN DE NUCLEÓTIDOS
+#primero convertimos a vector nuestros genomas
+funcion_vector<-function(nchar,genoma){
+genomavector<-c("")
+for (n in 1:nchar){
+genomavector<-append(genomavector,genoma[[1]][n])
+}
+genoma_total<-(paste(genomavector,collapse=""))
+genoma_total<-(toupper(genoma_total))
+return(genoma_total)
+}
+wuhan_gen<-funcion_vector(lenwuhan,wuhan)
+reinounido_gen<-funcion_vector(lenreinounido,reinounido)
+alfa_gen<-funcion_vector(lenalfa,alfa)
+sudafrica_gen<-funcion_vector(lensudafrica,sudafrica)
+beta_gen<-funcion_vector(lenbeta,beta)
+brasil_gen<-funcion_vector(lenbrasil,brasil)
+gamma_gen<-funcion_vector(lengamma,gamma)
+india_gen<-funcion_vector(lenindia,india)
+delta_gen<-funcion_vector(lendelta,delta)
+funcion_nuc<-function(genoma, nchar){
+conteo_a <- 0
+conteo_c <- 0
+conteo_g <- 0
+conteo_t <- 0
+for (i in 1:nchar) {
+nuc <- substr(genoma, i, i)
+if (nuc == "A") {
+conteo_a <- conteo_a + 1
+} else if (nuc == "C") {
+conteo_c <- conteo_c + 1
+} else if (nuc == "G") {
+conteo_g <- conteo_g + 1
+} else if (nuc == "T") {
+conteo_t <- conteo_t + 1
+}
+}
+cat("Existen", conteo_a, "A en el genoma\n")
+cat("Existen", conteo_c, "C en el genoma\n")
+cat("Existen", conteo_g, "G en el genoma\n")
+cat("Existen", conteo_t, "T en el genoma\n")
+return(c(A = conteo_a, C = conteo_c, G = conteo_g, T = conteo_t))
+}
+cat("La composición del genoma SARS-COV-2 de Wuhan es:\n")
+wuhan_comp <- funcion_nuc(wuhan_gen, lenwuhan)
+cat("La composición del genoma SARS-COV-2 de Reino Unido es:\n")
+reinounido_comp <- funcion_nuc(reinounido_gen, lenreinounido)
+cat("La composición del genoma SARS-COV-2 variante Alfa es:\n")
+alfa_comp <- funcion_nuc(alfa_gen, lenalfa)
+cat("La composición del genoma SARS-COV-2 de Sudafrica es:\n")
+sudafrica_comp <- funcion_nuc(sudafrica_gen, lensudafrica)
+cat("La composición del genoma SARS-COV-2 variante Beta es:\n")
+beta_comp <- funcion_nuc(beta_gen, lenbeta)
+cat("La composición del genoma SARS-COV-2 de Brasil es:\n")
+brasil_comp <- funcion_nuc(brasil_gen, lenbrasil)
+cat("La composición del genoma SARS-COV-2 variante Gamma es:\n")
+gamma_comp <- funcion_nuc(gamma_gen, lengamma)
+cat("La composición del genoma SARS-COV-2 de India es:\n")
+india_comp <- funcion_nuc(india_gen, lenindia)
+cat("La composición del genoma SARS-COV-2 variante Delta es:\n")
+delta_comp <- funcion_nuc(delta_gen, lendelta)
+#4. GRÁFICA
+nucleotidos <- c("Adenina", "Citosina", "Guanina", "Timina")
+df1 <- data.frame(Wuhan=wuhan_comp, UK=reinounido_comp, A=alfa_comp, Sudafrica=sudafrica_comp, B=beta_comp, Brasil=brasil_comp, G=gamma_comp, India=india_comp, D=delta_comp)
+df_matrix<-data.matrix(df1)
+color2<-brewer.pal(4,"PuRd")
+comp_n<-barplot(df_matrix,col=color2,main="Composición de Nucleotidos",ylim=c(0,39000))
+legend("topright",legend=nucleotidos,fill=color2, cex=0.5)
+functiontext<-function(vector_nucleotidos,num){
+vector_nuevo<-c(vector_nucleotidos[1])
+for (i in (2:4)){
+value<-vector_nucleotidos[i]+vector_nuevo[length(vector_nuevo)]
+vector_nuevo<-append(vector_nuevo,value)
+}
+print(vector_nuevo)
+for (i in (1:4)){
+text(x = comp_n[num], y = vector_nuevo[i], label = vector_nucleotidos[i], pos = 1,cex = 0.5)
+}
+}
+functiontext(wuhan_comp,1)
+functiontext(reinounido_comp,2)
+functiontext(alfa_comp,3)
+functiontext(sudafrica_comp,4)
+functiontext(beta_comp,5)
+functiontext(brasil_comp,6)
+functiontext(gamma_comp,7)
+functiontext(india_comp,8)
+functiontext(delta_comp,9)
+#5. CONTENIDO GC
+gc_wuhan <- GC(strsplit(wuhan_gen, "")[[1]])
+gc_reinounido <- GC(strsplit(reinounido_gen, "")[[1]])
+gc_alfa <- GC(strsplit(alfa_gen, "")[[1]])
+gc_sudafrica <- GC(strsplit(sudafrica_gen, "")[[1]])
+gc_beta <- GC(strsplit(beta_gen, "")[[1]])
+gc_brasil <- GC(strsplit(brasil_gen, "")[[1]])
+gc_gamma <- GC(strsplit(gamma_gen, "")[[1]])
+gc_india <- GC(strsplit(india_gen, "")[[1]])
+gc_delta <- GC(strsplit(delta_gen, "")[[1]])
+cat("El contenido de GC en valor de 0 a 1 de cada genoma de Sars-Cov-2 es:\n Wuhan:",gc_wuhan,"\n Reino Unido:",gc_reinounido,"\n Alfa:",gc_alfa,"\n Sudafrica:",gc_sudafrica,"\n Beta:",gc_beta,"\n Brasil:",gc_brasil,"\n Gamma:",gc_gamma,"\n India:",gc_india,"\n Delta:",gc_delta)
+pgc_wuhan <- round(((gc_wuhan)*100),2)
+pgc_reinounido <- round(((gc_reinounido)*100),2)
+pgc_alfa <- round(((gc_alfa)*100), 2)
+pgc_sudafrica <- round(((gc_sudafrica)*100),2)
+pgc_beta <- round(((gc_beta)*100),2)
+pgc_brasil <- round(((gc_brasil)*100),2)
+pgc_gamma <- round(((gc_gamma)*100),2)
+pgc_india <- round(((gc_india)*100),2)
+pgc_delta <- round(((gc_delta)*100),2)
+cat("El contenido de GC en porcentaje de cada genoma de Sars-Cov-2 es:\n Wuhan:",pgc_wuhan,"%","\n Reino Unido:",pgc_reinounido,"%","\n Alfa:",pgc_alfa,"%","\n Sudafrica:",pgc_sudafrica,"%","\n Beta:",pgc_beta,"%","\n Brasil:",pgc_brasil,"%","\n Gamma:",pgc_gamma,"%","\n India:",pgc_india,"%","\n Delta:",pgc_delta,"%")
+#6.GRÁFICA
+genomas <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+gc <- c(pgc_wuhan, pgc_reinounido, pgc_alfa, pgc_sudafrica, pgc_beta, pgc_brasil, pgc_gamma, pgc_india, pgc_delta)
+color3 <- brewer.pal(9, "Spectral")
+bp2 <- barplot(gc, beside=TRUE, col=color3, ylab="GC en porcentaje", ylim=c(0, 100), main= "Contenido de GC")
+legend("topright", legend=genomas, fill=color3, cex=0.65)
+text(x = bp2, y = gc, label = gc, pos = 1, cex = 0.8, col = "black")
+#7. TABLA (MARCO DE DATOS)
+nombre_comun <- rep("coronavirus de tipo 2 causante del síndrome respiratorio agudo severo", 9)
+identificador <- c("NC_045512", "OX646281", "LR991699", "MT324062", "PP519172", "MT126808", "OQ430688", "MT012098", "OM918219")
+longitud <- c(29903, 29903, 29885, 29903, 29882, 29876, 29874, 29854, 29818)
+contenido_gc <- c(37.97, 38.02, 37.98, 37.96, 37.94, 38.00, 37.92, 38.02, 37.96)
+datos <- data.frame(Nombre_comun = nombre_comun, ID = identificador, Longitud = longitud, Contenido_GC = contenido_gc)
+rownames(datos) <- c("Wuhan", "Reino Unido", "Alfa", "Sudafrica", "Beta", "Brasil", "Gamma", "India", "Delta")
+format(datos, justify = "centre")
